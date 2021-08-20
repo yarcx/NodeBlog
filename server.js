@@ -5,6 +5,8 @@ const Blog = require("./models/blog");
 const path = require("path");
 const route = require("./routes/route");
 
+const port = process.env.PORT || 5000;
+
 const app = express();
 app.set("view engine", "ejs");
 
@@ -23,8 +25,8 @@ const dbURI =
 mongoose
   .connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then((res) => {
-    app.listen(5000, () => {
-      console.log("you app is listening on port 5000");
+    app.listen(port, () => {
+      console.log("you app is listening on port", port);
     });
   })
   .catch((err) => console.log(err));
